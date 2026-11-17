@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Boost Kit - Free YouTube SEO Tools</title>
+<meta name="description" content="Free YouTube SEO tools to generate video titles, descriptions, hashtags, tags and thumbnail ideas.">
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#0b1020;
+ color:white;
+}
+header{
+ padding:22px 16px;
+ background:#121a30;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #26334f;
+}
+.logo{font-size:21px;font-weight:bold}
+.logo span{color:#38e39b}
+.badge{color:#38e39b;font-size:12px}
+.hero{text-align:center;padding:45px 18px 25px}
+.hero h1{font-size:32px;margin:0 0 12px}
+.hero h1 span{color:#38e39b}
+.hero p{color:#aab6cc;line-height:1.6}
+.container{max-width:850px;margin:auto;padding:15px}
+.card{
+ background:#141d33;
+ padding:20px;
+ border-radius:15px;
+ margin-bottom:18px;
+ border:1px solid #26334f;
+}
+h2{font-size:19px;margin-top:0}
+label{display:block;margin:14px 0 8px;color:#cbd5e1}
+input,select,textarea{
+ width:100%;
+ padding:14px;
+ border-radius:9px;
+ border:1px solid #354461;
+ background:#0b1326;
+ color:white;
+ font-size:15px;
+ outline:none;
+}
+textarea{min-height:100px;resize:vertical}
+button{
+ border:0;
+ border-radius:9px;
+ padding:13px 17px;
+ background:#38e39b;
+ color:#07130e;
+ font-weight:bold;
+ cursor:pointer;
+ margin-top:12px;
+}
+button:active{transform:scale(.97)}
+.result{
+ background:#0b1326;
+ border:1px solid #354461;
+ padding:15px;
+ border-radius:9px;
+ margin-top:13px;
+ white-space:pre-wrap;
+ line-height:1.6;
+ overflow-wrap:anywhere;
+}
+.copy{background:#263b58;color:white;margin-left:5px}
+.tools{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+.tool{
+ background:#1c2942;
+ padding:16px 10px;
+ border-radius:10px;
+ text-align:center;
+ font-size:14px;
+ cursor:pointer;
+ border:1px solid #354461;
+}
+.tool.active{border:1px solid #38e39b;color:#38e39b}
+footer{
+ text-align:center;
+ padding:30px;
+ color:#8492aa;
+ font-size:13px;
+}
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🚀 YouTube <span>Boost Kit</span></div>
+<div class="badge">100% FREE TOOLS</div>
+</header>
+
+<section class="hero">
+<h1>Grow Your <span>YouTube Channel</span></h1>
+<p>Powerful free tools to improve your YouTube SEO.<br>
+Create better titles, descriptions, tags and more.</p>
+</section>
+
+<div class="container">
+
+<div class="card">
+<h2>🎯 Select Your SEO Tool</h2>
+<div class="tools">
+<div class="tool active" onclick="showTool('title',this)">📝 Title Generator</div>
+<div class="tool" onclick="showTool('description',this)">📄 Description</div>
+<div class="tool" onclick="showTool('hashtags',this)">#️⃣ Hashtags</div>
+<div class="tool" onclick="showTool('tags',this)">🏷️ Tags Generator</div>
+<div class="tool" onclick="showTool('keywords',this)">🔍 Keywords</div>
+<div class="tool" onclick="showTool('thumbnail',this)">🖼️ Thumbnail Ideas</div>
+<div class="tool" onclick="showTool('score',this)">📊 SEO Score</div>
+</div>
+</div>
+
+<div class="card">
+<h2 id="toolTitle">📝 YouTube Title Generator</h2>
+
+<label>Enter Your Video Topic</label>
+<input id="topic" placeholder="Example: Free Fire Headshot Tips">
+
+<label>Select Language</label>
+<select id="language">
+<option value="English">English</option>
+<option value="Hindi">Hindi</option>
+</select>
+
+<button onclick="generate()">Generate Now 🚀</button>
+
+<div id="output" class="result hidden"></div>
+<button id="copy" class="copy hidden" onclick="copyResult()">Copy Result</button>
+</div>
+
+<div class="card">
+<h2>💡 How To Use</h2>
+<p style="color:#aab6cc;line-height:1.8">
+1. Select your favorite SEO tool.<br>
+2. Enter your video topic.<br>
+3. Select your language.<br>
+4. Click Generate Now.<br>
+5. Copy your results and use them on YouTube.
+</p>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 YouTube Boost Kit</p>
+<p>Free YouTube Creator Tools</p>
+</footer>
+
+<script>
+let currentTool="title";
+let finalResult="";
+
+function showTool(tool,el){
+ currentTool=tool;
+ document.querySelectorAll(".tool").forEach(x=>x.classList.remove("active"));
+ el.classList.add("active");
+
+ const names={
+ title:"📝 YouTube Title Generator",
+ description:"📄 Description Generator",
+ hashtags:"#️⃣ Hashtag Generator",
+ tags:"🏷️ Tags Generator",
+ keywords:"🔍 Keyword Generator",
+ thumbnail:"🖼️ Thumbnail Ideas",
+ score:"📊 SEO Score Checker"
+ };
+
+ document.getElementById("toolTitle").innerText=names[tool];
+ document.getElementById("output").classList.add("hidden");
+ document.getElementById("copy").classList.add("hidden");
+}
+
+function generate(){
+ let topic=document.getElementById("topic").value.trim();
+ let lang=document.getElementById("language").value;
+ if(!topic){alert("Please enter your video topic!");return;}
+
+ let result="";
+ let t=topic;
+
+ if(currentTool==="title"){
+ result=lang==="Hindi"?
+ `1. ${t} कैसे करें? पूरी जानकारी!\n2. ${t} के 5 जबरदस्त टिप्स 🔥\n3. ${t} की ये ट्रिक आपने नहीं देखी होगी!\n4. ${t} का सबसे आसान तरीका!\n5. ${t} की पूरी सच्चाई!`:
+ `1. ${t} - Complete Guide for Beginners!\n2. 5 Amazing ${t} Tips You Must Know!\n3. The Ultimate ${t} Guide 🔥\n4. How to Master ${t}!\n5. Best ${t} Tricks You Should Try!`;
+ }
+
+ if(currentTool==="description"){
+ result=lang==="Hindi"?
+ `आज के वीडियो में हम ${t} के बारे में जानेंगे।\n\nवीडियो पसंद आए तो Like, Share और Subscribe जरूर करें!\n\nआपका सपोर्ट हमारे लिए बहुत महत्वपूर्ण है।\n\n#${t.replace(/[^a-zA-Z0-9]/g,"")}`:
+ `Welcome to our video about ${t}!\n\nIn this video, we explore useful tips, tricks and information about ${t}.\n\nIf you enjoy this video:\n👍 Like\n💬 Comment\n🔔 Subscribe\n\nThanks for watching!`;
+ }
+
+ if(currentTool==="hashtags"){
+ let words=t.split(/\s+/).filter(Boolean);
+ result=[...words.map(w=>"#"+w.replace(/[^a-zA-Z0-9]/g,"")),"#YouTube","#YouTubeShorts","#Trending","#Viral","#Creator"].join(" ");
+ }
+
+ if(currentTool==="tags"){
+ result=[t,t+" tutorial",t+" tips",t+" tricks","how to "+t,t+" for beginners","best "+t,"YouTube Shorts","trending video"].join(", ");
+ }
+
+ if(currentTool==="keywords"){
+ result=`Main Keyword: ${t}\n\nRelated Keywords:\n${t} tutorial\n${t} tips\n${t} tricks\nHow to ${t}\nBest ${t}\n${t} for beginners\n${t} guide`;
+ }
+
+ if(currentTool==="thumbnail"){
+ result=`Thumbnail Ideas for: ${t}\n\n1. Bold text with an eye-catching background.\n2. Before vs After comparison.\n3. Close-up subject with expressive face.\n4. Big number and curiosity-based text.\n5. Bright contrasting colors with a clear focal point.\n\nTip: Keep thumbnail text short and readable.`;
+ }
+
+ if(currentTool==="score"){
+ let score=0;
+ if(t.length>=5)score+=20;
+ if(t.length>=15)score+=20;
+ if(t.split(" ").length>=3)score+=20;
+ if(/[0-9]/.test(t))score+=20;
+ if(/how|best|tips|guide|tutorial|kaise/i.test(t))score+=20;
+
+ result=`SEO Checklist Score: ${score}/100\n\n${score>=80?"Good topic structure!":score>=60?"Decent topic. Improve it further.":"Try adding relevant keywords and more detail."}\n\nThis is a basic text checklist, not an actual YouTube ranking score.`;
+ }
+
+ finalResult=result;
+ document.getElementById("output").innerText=result;
+ document.getElementById("output").classList.remove("hidden");
+ document.getElementById("copy").classList.remove("hidden");
+}
+
+function copyResult(){
+ if(!finalResult)return;
+ if(navigator.clipboard){
+ navigator.clipboard.writeText(finalResult)
+ .then(()=>alert("Copied successfully!"))
+ .catch(()=>fallbackCopy());
+ }else{fallbackCopy();}
+}
+
+function fallbackCopy(){
+ let area=document.createElement("textarea");
+ area.value=finalResult;
+ document.body.appendChild(area);
+ area.select();
+ document.execCommand("copy");
+ area.remove();
+ alert("Copied!");
+}
+</script>
+
+</body>
+  </html>
